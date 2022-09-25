@@ -6,6 +6,15 @@ import Message from './Sections/Message';
 import { List, Avatar } from 'antd';
 import { RobotOutlined, SmileOutlined } from '@ant-design/icons';
 import Card from "./Sections/Card";
+//import { detectIntentwithTTSResponseEvent, detectIntentwithTTSResponseText } from '../../../server/routes/dialogflow'
+
+
+//const AudioContext = window.AudioContext;
+//const audioContext = new AudioContext();
+//<audio id='Event' src='./Event.wav'/>
+//const audioElement = document.querySelector('audio');
+//const track = audioContext.createMediaElementSource(audioElement);
+
 function Chatbot() {
     const dispatch = useDispatch();
     const messagesFromRedux = useSelector(state => state.message.messages)
@@ -48,6 +57,7 @@ function Chatbot() {
                 }
 
                 dispatch(saveMessage(conversation))
+                
             }
 
 
@@ -84,10 +94,9 @@ function Chatbot() {
                     who: 'bot',
                     content: content
                 }
-
-                dispatch(saveMessage(conversation))
+                dispatch(saveMessage(conversation))  
+                
             }
-
 
         } catch (error) {
             let conversation = {
@@ -103,6 +112,8 @@ function Chatbot() {
 
     }
 
+  //  detectIntentwithTTSResponseEvent();
+  //  detectIntentwithTTSResponseText();
 
     const keyPressHanlder = (e) => {
         if (e.key === "Enter") {
